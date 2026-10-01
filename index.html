@@ -141,8 +141,8 @@
     white-space:nowrap; pointer-events:none;
   }
   .bubble--phone{ display:none !important; }
-  .bubble--phone svg{ width:66px; height:25.5px; }
-  .bubble--phone .bubble-txt{ font-size:10px; top:42%; }
+  .bubble--phone svg{ width:82px; height:31.7px; }   /* phone: bigger (was 66 x 25.5) */
+  .bubble--phone .bubble-txt{ font-size:12.5px; top:42%; }   /* was 10px */
 
   /* ---------- Footer: separated by a line, left-aligned, smaller ---------- */
   .footer{
@@ -426,14 +426,14 @@
     .intro{ padding-left:66px; }   /* was 56px */
   }
   @media (max-width:760px){
-    .banner{ font-size:10px; }
-    .social{ top:32px; right:16px; }   /* phone: one bubble in the top corner */
+    .banner{ font-size:9px; }   /* phone: smaller letters */
+    .social{ top:37px; right:16px; }   /* phone: one bubble in the top corner */
     .social .bubble:not(.bubble--phone){ display:none; }
     .social .bubble--phone{ display:flex !important; }
     .intro{ padding:34px 24px 0; }   /* nothing sits in the top corner on phone any more, so the text moves back up */
     .intro-title{ font-size:clamp(26px, 7.4vw, 38px); white-space:normal; width:calc(100% / var(--stretch)); }
     .lucy-stack{ width:2.1em; height:1.6em; margin:-0.25em 0 -0.25em 0.07em; top:-0.12em; }   /* phone: bigger photo, nudged up (was 1.4em x 1.05em) */
-    .intro-note{ margin-top:2px; font-size:9px; }   /* phone: back to the original size */
+    .intro-note{ margin-top:2px; font-size:calc(clamp(26px, 7.4vw, 38px) * 0.32); }   /* phone: a bit bigger (was 9px); tied to the title size so it ends at about the 'k' in 'Lucy Pok' */
     .intro-desc{ margin-top:24px; font-size:13.5px; }
     .intro-cta{ margin-top:28px; font-size:12px; }
     .work-grid{ display:block; column-count:auto; padding:40px 20px 24px; }
@@ -784,8 +784,8 @@
     (function(){
       var track = document.querySelector('.banner-track');
       if(!track) return;
-      var SPEED = 65;
       function setSpeed(){
+        var SPEED = window.matchMedia('(max-width:760px)').matches ? 38 : 65;   // phone: slower
         var half = track.scrollWidth / 2;
         if(half > 0) track.style.animationDuration = (half / SPEED) + 's';
       }
