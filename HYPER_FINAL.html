@@ -4,6 +4,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HyperRaar — Subverting Instagram — Lucy Pokrivčáková</title>
+<!-- SEO:start -->
+<meta name="description" content="HyperRaar turns the doomscroll into music: a participatory Instagram project where reels become parts of a song, played together out loud.">
+<link rel="canonical" href="https://lucypok.github.io/HYPER_FINAL.html">
+<meta name="author" content="Lucy Pokrivčáková">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lucy Pok">
+<meta property="og:title" content="HyperRaar — Subverting Instagram — Lucy Pokrivčáková">
+<meta property="og:description" content="HyperRaar turns the doomscroll into music: a participatory Instagram project where reels become parts of a song, played together out loud.">
+<meta property="og:url" content="https://lucypok.github.io/HYPER_FINAL.html">
+<meta property="og:image" content="https://lucypok.github.io/raaring-poster%20copy.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HyperRaar — Subverting Instagram — Lucy Pokrivčáková">
+<meta name="twitter:description" content="HyperRaar turns the doomscroll into music: a participatory Instagram project where reels become parts of a song, played together out loud.">
+<meta name="twitter:image" content="https://lucypok.github.io/raaring-poster%20copy.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "HyperRaar — Subverting Instagram — Lucy Pokrivčáková",
+  "url": "https://lucypok.github.io/HYPER_FINAL.html",
+  "description": "HyperRaar turns the doomscroll into music: a participatory Instagram project where reels become parts of a song, played together out loud.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Lucy Pok",
+    "url": "https://lucypok.github.io/"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Lucy Pokrivčáková",
+    "alternateName": [
+      "Lucy Pok",
+      "Lucia Pokrivčáková",
+      "Lucy Pokrivcakova"
+    ],
+    "url": "https://lucypok.github.io/"
+  }
+}
+</script>
+<!-- SEO:end -->
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -212,6 +251,23 @@
   .ig-crop iframe{
     margin-top:-120px !important;
     display:block !important;
+  }
+  /* Desktop only: the post is shrunk a little and its box is exactly as tall as the phones,
+     so "How to Hyperraar" sits on the same line as "Homepage" and "Raars/Reels".
+     Change --ig-scale to make the post bigger or smaller (1 = old size). */
+  .desktop-phones .ig-embed-card{ --ig-scale:0.92; width:calc(326px * var(--ig-scale)); }
+  .desktop-phones .ig-crop{
+    width:100%;
+    height:calc(220px * 19.5 / 9);   /* same height as .phone-frame */
+    position:relative;
+  }
+  .desktop-phones .ig-crop iframe{
+    width:326px !important;
+    min-width:326px !important;
+    max-width:none !important;
+    margin:calc(-120px * var(--ig-scale)) 0 0 0 !important;
+    transform:scale(var(--ig-scale));
+    transform-origin:top left;
   }
   .phone-link{
     display:block;
