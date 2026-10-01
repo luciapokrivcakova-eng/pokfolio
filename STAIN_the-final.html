@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAIN - LUCY POK</title>
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#17150f;
+  
+--white:#fcf9f9;
+    --accent:#6b4a34;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+    cursor:url('roomba-cursor copy.png') 36 28, auto;
+    position:relative;
+  }
+  a{ color:inherit; }
+  @media (prefers-reduced-motion: reduce){
+    .float-item{ transition:none !important; }
+  }
+
+  /* ---------- Stain background ---------- */
+  .stain-bg{
+    position:fixed;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    background-image:url('stain-bg copy.png');
+    background-size:160%;
+    background-position:center;
+    background-repeat:no-repeat;
+    opacity:0;
+    z-index:-1;
+    pointer-events:none;
+  }
+
+  /* ---------- Nav ---------- */
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:24px 18px;
+    max-width:1400px;
+    margin:0 auto;
+  }
+  .nav-mark{
+    font-family:'Inter', sans-serif;
+    font-size:20px;
+    font-weight:600;
+    letter-spacing:-0.06em;
+    text-transform:uppercase;
+    text-decoration:none;
+    display:inline-block;
+    transform:scaleX(1.12);
+    transform-origin:left;
+    margin-left:-10px;
+  }
+  .nav-back{
+    font-family:'Inter', sans-serif;
+    font-weight:500;
+    font-size:15px;
+    letter-spacing:-0.01em;
+    text-decoration:none;
+    transform: scaleX(1.15);
+    transition:opacity 0.2s ease;
+  }
+  .nav-back:hover{ opacity:0.6; }
+
+  /* ---------- Header ---------- */
+  .project-header{
+    max-width:720px;
+    margin:0 auto;
+    padding:40px 28px 6px;
+    text-align:center;
+  }
+  .project-tag{
+    font-weight:600;
+    font-size:18px;
+    color:var(--accent);
+    margin:0 0 10px;
+  
+  }
+  .project-title{
+    font-weight:600;
+    font-size:clamp(28px, 4.4vw, 44px);
+    letter-spacing:-0.06em;
+    margin:0 0 24px;
+    display:inline-block;
+    transform:scaleX(1.12);
+    transform-origin:center;
+  }
+  .project-lede{
+    font-weight:700;
+    font-size:clamp(15px, 1.8vw, 18px);
+    line-height:1.5;
+    max-width:600px;
+    margin:0 auto;
+  }
+
+  /* ---------- Collage ---------- */
+  .collage{
+    position:relative;
+    max-width:1300px;
+    margin:4px auto 0;
+    padding:0 20px;
+    height:700px;
+  }
+  .watch-label{
+    position:absolute;
+    top: 20px;
+    left:50%;
+    transform: translateX(-50%) scaleX(1.15);
+    text-align:center;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:-0.02em;
+    text-transform:uppercase;
+    
+    cursor:pointer;
+    background:none;
+    border:0;
+    color:inherit;
+    font-family:inherit;
+  }
+  .watch-label .arrow{
+    display:block;
+    margin-top:4px;
+    font-size:16px;
+    animation:arrow-float 1.6s ease-in-out infinite;
+    position : center;
+  }
+  @keyframes arrow-float{
+    0%, 100%{ transform:translateY(0); }
+    50%{ transform:translateY(5px); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .watch-label .arrow{ animation:none; }
+  }
+
+  .float-item{
+    position:absolute;
+    border-radius:0;
+    overflow:hidden;
+    will-change:transform;
+    transition:transform 0.05s linear;
+    z-index:2;
+  }
+  .float-item img{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+  .float-item.placeholder{
+    background:repeating-linear-gradient(
+      45deg,
+      rgba(23,21,15,0.04),
+      rgba(23,21,15,0.04) 10px,
+      rgba(23,21,15,0.07) 10px,
+      rgba(23,21,15,0.07) 20px
+    );
+    border:1px dashed rgba(23,21,15,0.25);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:10px;
+  }
+  .float-item.placeholder span{
+    font-size:11px;
+    font-weight:600;
+    color:rgba(23,21,15,0.5);
+    line-height:1.4;
+  }
+
+  /* desktop collage placement */
+  .item-process{ top:4%; left:2%; width:220px; transform:rotate(-4deg); }
+  .item-splatter{ top:26%; left:24%; width:220px; transform:rotate(-6deg); }
+  .item-box{ top:3%; left:48%; width:200px; transform:rotate(-2deg); }
+  .item-exhibit{ top:16%; left:78%; width:210px; transform:rotate(3deg); }
+  .item-face{ top:46%; left:4%; width:185px; transform:rotate(-3deg); }
+  .item-storyboard{ top:30%; left:50%; width:185px; transform:rotate(1deg); }
+  .item-workshop{ top:38%; left:74%; width:205px; transform:rotate(-2deg); }
+  .item-stickfigures{ top:62%; left:58%; width:280px; transform:rotate(2deg); }
+  .item-shower{ top:58%; left:26%; width:205px; transform:rotate(-1deg); }
+
+  /* ---------- Caption ---------- */
+  .exhibit-caption{
+    max-width:700px;
+    margin:-5px auto 0;
+    padding:8px 20px;
+    text-align:center;
+    font-weight:700;
+    font: size 15px;px;
+    letter-spacing:-0.02em;
+    text-transform:uppercase;
+    line-height:1.6;
+  }
+
+  /* ---------- Video (click to play) ---------- */
+  .yt-block{
+    max-width:780px;
+    margin:24px auto 0;
+    padding:0 28px;
+  }
+  .yt-facade{
+    position:relative;
+    border-radius:0;
+    overflow:hidden;
+    cursor:pointer;
+    background:#000;
+    aspect-ratio:16/9;
+  }
+  .yt-facade img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+    opacity:0.9;
+  }
+  .yt-facade .yt-topbar{
+    position:absolute;
+    top:0; left:0; right:0;
+    padding:10px 12px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:linear-gradient(180deg, rgba(0,0,0,0.55), transparent);
+    color:#fff;
+    font-size:12px;
+    font-weight:600;
+  }
+  .yt-facade .yt-topbar .dot{
+    width:22px; height:22px;
+    border-radius:50%;
+    background:#c22a1e;
+    display:flex; align-items:center; justify-content:center;
+    font-size:11px;
+  }
+  .yt-facade .play-btn{
+    position:absolute;
+    top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    width:54px; height:54px;
+    border-radius:50%;
+    background:rgba(194,42,30,0.92);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .yt-facade .play-btn svg{ width:18px; height:18px; fill:#fff; margin-left:2px; }
+  .yt-facade iframe{ width:100%; height:100%; border:0; display:block; }
+  .yt-facade.playing img,
+  .yt-facade.playing .play-btn,
+  .yt-facade.playing .yt-topbar{ display:none; }
+
+  /* ---------- Credits + footer ---------- */
+  .credits{
+    max-width:740px;
+    margin:20px auto 0;
+    padding:0 28px;
+    text-align:center;
+    font-size:15px;
+    font-weight:500;
+    color:#4a463d;
+    transform:scaleX(1.05);
+    letter-spacing:-0.02em;
+  }
+  .credits strong{ color:var(--ink); font-weight:700; }
+
+  .more-work{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    margin:90px auto 20px;
+    text-decoration:none;
+    text-align:center;
+  }
+  .more-work svg{ width:26px; height:28px; }
+  .more-work img { 
+  width: 50px; 
+  height: auto; 
+  display: block; 
+  animation: gentle-shake 1s ease-in-out infinite; 
+  transform-origin: bottom center; /* Keeps the bottom of the cup "planted" */
+}
+
+@keyframes gentle-shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
+}
+  .more-work span{
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:0.03em;
+    transform: scaleX(1.15);
+    text-transform:uppercase;
+  }
+
+  /* ---------- Mobile: collapse collage to a shorter, curated stack ---------- */
+  @media (max-width:760px){
+    .collage{
+      height:auto;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:22px;
+      padding:0 24px;
+    }
+    .watch-label{ position:static; transform:none; order:-1; margin-top:1px; margin-bottom:4px; }
+    .float-item{
+      position:static !important;
+      width:80% !important;
+      max-width:280px;
+      height:auto !important;
+    }
+    /* trim these on mobile so the scroll stays tight — full set stays on desktop */
+    .item-process,
+    .item-box,
+    .item-stickfigures{
+      display:none;
+    }
+    .project-header{ padding:30px 24px 6px; }
+    .exhibit-caption{ margin-top:50px; }
+    .yt-block{ margin-top:2px; padding: px; }
+    .credits{ margin-top:20px; }
+    .more-work{ margin:60px auto 25px; }
+  }
+
+  /* phone: the role line ("research + design + ...") is the same size on every project page */
+  @media (max-width:760px){
+    .project-tag{ font-size:16px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="stain-bg"></div>
+
+  <nav class="nav">
+    <a class="nav-mark" href="FINALLYHOME.html">lucy pok*</a>
+    <a class="nav-back" href="FINALLYHOME.html" onclick="if(history.length>1&&(location.protocol==='file:'||(document.referrer&&document.referrer.indexOf(location.origin)===0))){history.back();return false;}">&larr; back</a>
+  </nav>
+
+  <header class="project-header">
+    <p class="project-tag">concept + direction + edit</p>
+    <h1 class="project-title">STAIN — animated short</h1>
+    <p class="project-lede">"In a world where everything is done for you, and creativity is non-existent, a simple stain can be a sign of agency."</p>
+  </header>
+
+  <div class="collage" id="collage">
+    <button type="button" class="watch-label" id="watchLabel">watch it<span class="arrow">&darr;</span></button>
+
+    <div class="float-item item-process" data-speed="0.05">
+      <img src="stain-process-photo copy.jpg" alt="Coffee cups mounted on tiled wall, part of the exhibition installation">
+    </div>
+
+    <div class="float-item item-splatter" data-speed="0.09">
+      <img src="stain-still-splatter copy.jpg" alt="Animation still: the character covered in ink splatter">
+    </div>
+
+    <div class="float-item item-box" data-speed="0.04">
+      <img src="stain-still-boxspill copy.jpg" alt="Animation still: coffee spilling across a countertop">
+    </div>
+
+    <div class="float-item item-exhibit" data-speed="0.07">
+      <img src="stain-screening-audience copy.jpg" alt="Visitors watching the STAIN title card projected at the screening">
+    </div>
+
+    <div class="float-item item-face" data-speed="0.06">
+      <img src="stain-still-face copy.jpg" alt="Animation still: close-up of the character's face">
+    </div>
+
+    <div class="float-item item-storyboard" data-speed="0.03">
+      <img src="stain-storyboard copy.jpg" alt="Hand-drawn storyboard for STAIN">
+    </div>
+
+    <div class="float-item item-workshop" data-speed="0.08">
+      <img src="stain-workshop copy.jpg" alt="Visitors making their own stains at the outdoor workshop">
+    </div>
+
+    <div class="float-item item-stickfigures" data-speed="0.05">
+      <img src="stain-character-lineup copy.png" alt="Character lineup sketches for STAIN">
+    </div>
+
+    <div class="float-item item-shower" data-speed="0.05">
+      <img src="stain-still-shower copy.jpg" alt="Animation still: the character showering, assisted by robotic arms">
+    </div>
+  </div>
+
+  <p class="exhibit-caption">Exhibited at Moezeum, Rotterdam — alongside the screening, visitors were invited to make their own stains, engaging their own creativity and imagination.</p>
+
+  <div class="yt-block" id="ytBlock">
+    <div class="yt-facade" id="ytFacade">
+      <div class="yt-topbar">
+        <span class="dot">▶</span>
+        Stain (2026) Animated Short — LUCY POK
+      </div>
+      <img src="titlecard copy.png" alt="STAIN animated short thumbnail">
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><polygon points="5,3 21,12 5,21"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <p class="credits">Project was made in collaboration with <strong>Ayan Niyazi, Xue Ning, Liliana Revierre and Amin.</strong></p>
+
+  <a class="more-work" href="FINALLYHOME.html">
+    <img src="coffee-cup-doodle copy 2.png" alt="">
+    <span>more work</span>
+  </a>
+
+  <script>
+    // "watch" label: click scrolls straight down to the YouTube video
+    const watchLabel = document.getElementById('watchLabel');
+    const ytBlock = document.getElementById('ytBlock');
+    if (watchLabel && ytBlock) {
+      watchLabel.addEventListener('click', () => {
+        ytBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+
+    // Click-to-play YouTube facade
+    const ytFacade = document.getElementById('ytFacade');
+    ytFacade.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/elc6e05hRtg?autoplay=1';
+      iframe.title = 'STAIN (2026) Animated Short';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      ytFacade.appendChild(iframe);
+      ytFacade.classList.add('playing');
+    });
+
+    // Stain background: fades in from 0 opacity at the top of the page,
+    // staying subtle for most of the scroll, then swelling toward the
+    // bottom (eased with a cubic curve rather than linear).
+    const stainBg = document.querySelector('.stain-bg');
+    const MAX_STAIN_OPACITY = 0.55;
+    function updateStainOpacity(){
+      if (!stainBg) return;
+      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
+      const clamped = Math.max(0, Math.min(1, progress));
+      const eased = Math.pow(clamped, 3);
+      stainBg.style.opacity = (eased * MAX_STAIN_OPACITY).toFixed(3);
+    }
+
+    // Floating parallax: each item drifts at its own speed as it passes
+    // through the viewport, offset relative to viewport center so it
+    // never runs away — it settles back as it re-centers.
+    const floatItems = Array.from(document.querySelectorAll('.float-item'));
+    let ticking = false;
+
+    // Collage: on desktop, tiles start clustered near the collage's
+    // center and burst out to their laid-out positions as the collage
+    // scrolls into view. Each tile also keeps a small independent float
+    // drift once it's mostly settled. Rest positions are read from
+    // offsetLeft/offsetTop (unaffected by transform) so this only needs
+    // computing once per layout.
+    const collageEl = document.getElementById('collage');
+    const isDesktopCollage = () => window.innerWidth > 760;
+
+    function computeClusterOffsets(){
+      if (!isDesktopCollage()) return;
+      const clusterX = collageEl.offsetWidth / 2;
+      const clusterY = collageEl.offsetHeight * 0.34;
+      floatItems.forEach(el => {
+        const restCenterX = el.offsetLeft + el.offsetWidth / 2;
+        const restCenterY = el.offsetTop + el.offsetHeight / 2;
+        el.dataset.clusterDx = (clusterX - restCenterX).toFixed(1);
+        el.dataset.clusterDy = (clusterY - restCenterY).toFixed(1);
+      });
+    }
+
+    function updateFloat(){
+      const vh = window.innerHeight;
+      const viewportCenter = vh / 2;
+      const desktop = isDesktopCollage();
+
+      let burstProgress = 1;
+      let rise = 0;
+      if (desktop && collageEl) {
+        const rect = collageEl.getBoundingClientRect();
+        // 0 when the collage's top just enters the bottom of the viewport,
+        // 1 once it's scrolled about 60% of the viewport height into view.
+        burstProgress = 1 - (rect.top / (vh * 0.75));
+        burstProgress = Math.max(0, Math.min(1, burstProgress));
+        // once the collage has scrolled past the top of the viewport, drift
+        // the whole group upward a bit faster than the page scroll so it
+        // clears out of the way and the video feels closer/quicker to reach
+        rise = Math.min(Math.max(0, -rect.top) * 0.15, 130);
+      }
+
+      floatItems.forEach(el => {
+        const speed = parseFloat(el.dataset.speed || '0.05');
+        const rotate = el.style.getPropertyValue('--base-rotate') || '0deg';
+        const elRect = el.getBoundingClientRect();
+        const elCenter = elRect.top + elRect.height / 2;
+        const floatY = (viewportCenter - elCenter) * speed;
+
+        if (desktop) {
+          const dx = parseFloat(el.dataset.clusterDx || '0');
+          const dy = parseFloat(el.dataset.clusterDy || '0');
+          const burstX = dx * (1 - burstProgress);
+          const burstY = dy * (1 - burstProgress);
+          const scale = 0.5 + 0.5 * burstProgress;
+          el.style.transform = `translate(${burstX}px, ${(burstY + floatY * burstProgress - rise).toFixed(1)}px) scale(${scale.toFixed(3)}) rotate(${rotate})`;
+        } else {
+          el.style.transform = `translateY(${floatY.toFixed(1)}px) rotate(${rotate})`;
+        }
+      });
+      ticking = false;
+    }
+
+    function onScroll(){
+      updateStainOpacity();
+      if (!ticking){
+        window.requestAnimationFrame(updateFloat);
+        ticking = true;
+      }
+    }
+
+    // capture each item's authored rotation as a CSS var so JS transform
+    // doesn't clobber the collage's tilted, collaged look
+    floatItems.forEach(el => {
+      const style = window.getComputedStyle(el);
+      const matrix = style.transform;
+      let angle = 0;
+      if (matrix && matrix !== 'none') {
+        const values = matrix.split('(')[1].split(')')[0].split(',');
+        const a = parseFloat(values[0]);
+        const b = parseFloat(values[1]);
+        angle = Math.round(Math.atan2(b, a) * (180 / Math.PI));
+      }
+      el.style.setProperty('--base-rotate', angle + 'deg');
+    });
+
+    window.addEventListener('scroll', onScroll, { passive:true });
+    window.addEventListener('resize', () => { computeClusterOffsets(); onScroll(); });
+    computeClusterOffsets();
+    updateFloat();
+    updateStainOpacity();
+  </script>
+
+
+  
+
+</body>
+</html>

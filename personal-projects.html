@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What if... — Lucy Pokrivčáková</title>
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#17150f;
+    --paper:#fefefe;
+    --navy:#0b1e5b;   /* dark blue for this page's text */
+  }
+  *{ box-sizing:border-box; }
+  html{ overflow-x:hidden; }
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    font-family:'Inter', sans-serif;
+    color:var(--navy);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{ color:inherit; }
+
+  /* ---------- Nav (same placement as the other project pages) ---------- */
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    width:100%;
+    padding:24px 18px;
+    max-width:1400px;
+    margin:0 auto;
+  }
+  .nav-mark{
+    font-size:20px;
+    font-weight:600;
+    letter-spacing:-0.06em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--navy);
+    display:inline-block;
+    transform:scaleX(1.12);
+    transform-origin:left;
+    margin-left:-10px;
+  }
+  .nav-back{
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:-0.01em;
+    text-decoration:none;
+    color:var(--navy);
+    transform:scaleX(1.15);
+    transition:opacity 0.2s ease;
+  }
+  .nav-back:hover{ opacity:0.6; }
+
+  /* ---------- Message ---------- */
+  .message{
+    flex:1;
+    display:grid;
+    grid-template-columns:minmax(0, 440px) minmax(0, 500px);
+    grid-template-rows:auto auto;
+    column-gap:80px;
+    align-content:start;             /* starts lower down the page, not vertically centred */
+    justify-content:center;          /* text + video sit toward the middle of the page */
+    padding:110px 28px 120px;
+  }
+  .message-text{ grid-column:1; grid-row:1; min-width:0; position:relative; top:-40px; }   /* text nudged up; the video stays put */
+  /* the video sits on the right, starting where the text ends */
+  .grass{ grid-column:2; grid-row:2; display:block; width:100%; height:auto; margin-top:-90px; }   /* pulled up a little, next to the end of the text */
+  .message p{
+    margin:0 0 22px;
+    text-align:left;
+    font-weight:500;
+    font-size:clamp(16px, 1.5vw, 20px);
+    line-height:1.4;
+    letter-spacing:-0.03em;
+  }
+  .message a{
+    text-decoration:underline;
+    text-decoration-thickness:1.5px;
+    text-underline-offset:3px;
+    transition:opacity 0.2s ease;
+  }
+  .message a:hover{ opacity:0.6; }
+
+  @media (max-width:860px){
+    /* narrow screens: video goes under the text */
+    .message{ display:flex; flex-direction:column; gap:36px; padding:40px 24px 80px; }
+    .message-text{ width:100%; top:0; }
+    .grass{ width:100%; margin-top:0; }
+  }
+  @media (max-width:760px){
+    .nav{ padding:18px 24px; }
+    .nav-mark{ font-size:17px; margin-left:0; }
+    .nav-back{ font-size:13px; }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a class="nav-mark" href="FINALLYHOME.html">lucy pok*</a>
+    <a class="nav-back" href="FINALLYHOME.html" onclick="if(history.length>1&&(location.protocol==='file:'||(document.referrer&&document.referrer.indexOf(location.origin)===0))){history.back();return false;}">&larr; back</a>
+  </nav>
+
+  <main class="message">
+    <div class="message-text">
+      <p>This page is still in progress... But what I can tell you is that this website is one of these experiments. I had no idea about coding or UX/UI before making this, but I became quite obsessed with it and the options it had for designing interactions. Hopefully the fun I had seeped through to your visiting experience:)</p>
+      <p>If you'd like to see some of my video work I've done for fun you can go to <a href="https://www.youtube.com/@LUCYPOK-17" target="_blank" rel="noopener">LUCY POK</a>.</p>
+    </div>
+    <video class="grass" src="grass2 copy.mp4" autoplay muted loop playsinline preload="auto" aria-label="Video of giant coffee cups in the grass by a pond, with small photos floating in the sky"></video>
+  </main>
+
+</body>
+</html>
