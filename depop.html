@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEPOP — spec campaign — Lucy Pokrivčáková</title>
+<!-- SEO:start -->
+<meta name="description" content="Depop spec campaign rooted in human behaviour: metro riders only look up when it arrives. Depop wasn&#x27;t speaking to young urban people, so we met them there.">
+<link rel="canonical" href="https://lucypok.github.io/depop.html">
+<meta name="author" content="Lucy Pokrivčáková">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Lucy Pok">
+<meta property="og:title" content="DEPOP — spec campaign — Lucy Pokrivčáková">
+<meta property="og:description" content="Depop spec campaign rooted in human behaviour: metro riders only look up when it arrives. Depop wasn&#x27;t speaking to young urban people, so we met them there.">
+<meta property="og:url" content="https://lucypok.github.io/depop.html">
+<meta property="og:image" content="https://lucypok.github.io/depop-hero-metro%20copy.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DEPOP — spec campaign — Lucy Pokrivčáková">
+<meta name="twitter:description" content="Depop spec campaign rooted in human behaviour: metro riders only look up when it arrives. Depop wasn&#x27;t speaking to young urban people, so we met them there.">
+<meta name="twitter:image" content="https://lucypok.github.io/depop-hero-metro%20copy.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "DEPOP — spec campaign — Lucy Pokrivčáková",
+  "url": "https://lucypok.github.io/depop.html",
+  "description": "Depop spec campaign rooted in human behaviour: metro riders only look up when it arrives. Depop wasn't speaking to young urban people, so we met them there.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Lucy Pok",
+    "url": "https://lucypok.github.io/"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Lucy Pokrivčáková",
+    "alternateName": [
+      "Lucy Pok",
+      "Lucia Pokrivčáková",
+      "Lucy Pokrivcakova"
+    ],
+    "url": "https://lucypok.github.io/"
+  }
+}
+</script>
+<!-- SEO:end -->
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#17150f;
+    --paper:#fffdfa;
+    --white:#fcf9f9;
+    --accent:#6b4a34;
+    --depop-red:#e2432a;
+  }
+  *{ box-sizing:border-box; }
+  html{ overflow-x:hidden; }
+  body{
+    margin:0;
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+    cursor:url('ov-chipkaart-cursor-small copy.png') 6 6, auto;
+    overflow-x:hidden;
+  }
+  a{ color:inherit; }
+
+  /* ---------- Hero: dark full-bleed background photo behind nav + header + intro ---------- */
+  .hero-bg{
+    position:relative;
+    background:#0e0d0a url('depop-bg-platform copy.jpg') center 30% / cover no-repeat;
+    will-change:background-position;
+  }
+  .hero-bg::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(10,9,7,0.72), rgba(10,9,7,0.6) 55%, rgba(10,9,7,0.82));
+  }
+  .hero-bg > *{ position:relative; z-index:1; }
+  .hero-bg,
+  .hero-bg .project-tag,
+  .hero-bg .project-title,
+  .hero-bg .intro-copy,
+  .hero-bg .intro-credit,
+  .hero-bg .nav-mark,
+  .hero-bg .nav-back,
+  .hero-bg .bottom-credit p,
+  .hero-bg .bottom-credit strong,
+  .hero-bg .more-work span{ color:var(--white); }
+  .hero-bg .project-tag,
+  .hero-bg .depop-link{ color:#ff542a; }
+  .footer-bg{ padding:78px 0 24px; background-position:center 75%; }
+
+  /* ---------- Nav (identical to STAIN page) ---------- */
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:24px 18px;
+    max-width:1400px;
+    margin:0 auto;
+  }
+  .nav-mark{
+    font-family:'Inter', sans-serif;
+    font-size:20px;
+    font-weight:600;
+    letter-spacing:-0.06em;
+    text-transform:uppercase;
+    text-decoration:none;
+    display:inline-block;
+    transform:scaleX(1.12);
+    transform-origin:left;
+    margin-left:-10px;
+  }
+  .nav-back{
+    font-family:'Inter', sans-serif;
+    font-weight:500;
+    font-size:14px;
+    letter-spacing:-0.01em;
+    text-decoration:none;
+    transform:scaleX(1.15);
+    transition:opacity 0.2s ease;
+  }
+  .nav-back:hover{ opacity:0.6; }
+
+  /* ---------- Header ---------- */
+  .project-header{
+    max-width:720px;
+    margin:0 auto;
+    padding:40px 28px 6px;
+    text-align:center;
+  }
+  .project-tag{
+    font-weight:600;
+    font-size:18px;
+    color:var(--depop-red);
+    margin:0 0 10px;
+    letter-spacing:-0.02em;
+    display:inline-block;
+    transform:scaleX(1.08);
+  }
+  .project-title{
+    font-weight:600;
+    font-size:clamp(28px, 4.4vw, 44px);
+    letter-spacing:-0.08em;
+    margin:0 0 26px;
+    display:inline-block;
+    transform:scaleX(1.14);
+    transform-origin:center;
+  }
+
+  /* ---------- Intro: side-by-side images + copy ---------- */
+  .intro{
+    max-width:1200px;
+    margin:16px auto 0;
+    padding:0 28px 80px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:75px;
+    align-items:flex-start;
+    justify-content:flex-start;
+     
+  }
+  .intro-visual{
+    position:relative;
+    flex:1 1 480px;
+    max-width:520px;
+    margin-left:40px;
+  }
+  .intro-visual img{
+    display:block;
+    width:100%;
+    height:auto;
+  }
+  .intro-visual .v-main{ display:block; }
+  .intro-visual .v-side{
+    position:absolute;
+    width:30%;
+    right:-7%;
+    bottom:-20%;
+    z-index:2;
+  }
+  .intro-credit{
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:52px 0 0;
+    line-height:1.4;
+  }
+  .intro-copy{
+    flex:1 1 300px;
+    max-width:340px;
+    font-weight:400;
+    font-size:clamp(15px, 1.3vw, 15px);
+    line-height:1.55;
+    letter-spacing:-0.01em;
+    transform:scaleX(1.03);
+    transform-origin:left;
+  }
+  .intro-copy p{
+    margin:0 0 14px;
+    display:inline-block;
+    transform:scaleX(1.10);
+    transform-origin:left;
+  }
+  .intro-copy p:first-child{
+    font-weight:700;
+    font-size:1.02em;
+  }
+  .intro-copy p:not(:first-child){
+    font-size:14px;
+  }
+  .intro-copy .bts-link{
+    display:inline-block;
+    margin-top:6px;
+    font-size:13px;
+    transform:scaleX(1.10);
+    transform-origin:left;
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+
+  @media (min-width:1025px){
+    .intro{ padding-bottom:120px; }   /* pushes the white poster banner a bit lower (laptop) */
+  }
+
+  /* ---------- Depop link ---------- */
+  .depop-link{
+    color:var(--depop-red);
+    font-weight:700;
+    font-size:1.05em;
+    text-decoration:none;
+  }
+  .depop-link-white,
+  .hero-bg .depop-link-white{
+    color:var(--white);
+    font-weight:400;
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+
+
+  /* ---------- Carousel: train-window sliding posters on a light banner ---------- */
+  .carousel-banner{
+    background:var(--paper);
+    margin-top:0px;
+    margin-bottom:0px;
+  
+    padding:40px 0;
+    overflow:hidden;
+  }
+  .carousel-track{
+    display:flex;
+    width:max-content;
+    gap:20px;
+    animation:slide-left 34s linear infinite;
+  }
+  .carousel-banner:hover .carousel-track{ animation-play-state:paused; }
+  .carousel-track img{
+    display:block;
+    width:300px;
+    height:392px;
+    object-fit:cover;
+    flex:0 0 auto;
+  }
+  @keyframes slide-left{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .carousel-track{ animation:none; }
+  }
+  @media (max-width:760px){
+    .carousel-track img{ width:190px; height:250px; }
+    .carousel-banner{
+      margin-top:0;
+      padding:44px 30px;
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+    }
+    .carousel-track{
+      animation:none !important;
+      gap:14px;
+    }
+  }
+
+  /* ---------- Bottom credit with collaborator photo ---------- */
+  .bottom-credit{
+    max-width:640px;
+    margin:0 auto;
+    padding:0 28px;
+    text-align:center;
+  }
+  .bottom-credit p,
+  .bottom-credit img{
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='40'%3E%3Ctext x='4' y='30' font-family='Arial, Helvetica, sans-serif' font-size='30' font-weight='800' fill='white' stroke='black' stroke-width='0.6'%3E%26lt%3B3%3C/text%3E%3C/svg%3E") 4 20, pointer;
+  }
+  .bottom-credit p{
+    font-size:14px;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    margin:0 0 18px;
+    display:inline-block;
+    transform:scaleX(1.14);
+    transform-origin:center;
+  }
+  .bottom-credit strong{ font-weight:700; }
+  .bottom-credit img{
+    width:180px;
+    height:auto;
+    display:block;
+    margin:0 auto;
+  }
+
+  /* ---------- More work (identical to STAIN page) ---------- */
+  .more-work{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    margin:60px auto 0;
+    text-decoration:none;
+    text-align:center;
+  }
+  .more-work svg{ width:26px; height:28px; }
+  .more-work img{
+    width:50px;
+    height:auto;
+    display:block;
+    animation:gentle-shake 1s ease-in-out infinite;
+    transform-origin:bottom center;
+  }
+  @keyframes gentle-shake{
+    0%, 100%{ transform:rotate(0deg); }
+    25%{ transform:rotate(-3deg); }
+    75%{ transform:rotate(3deg); }
+  }
+  .more-work span{
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:0.03em;
+    transform:scaleX(1.14);
+    text-transform:uppercase;
+  }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width:760px){
+    .nav{ padding:18px 28px; }
+    .nav-mark{ font-size:17px; margin-left:0; }
+    .nav-back{ font-size:13px; }
+
+    .project-header{ padding:30px 32px 6px; }
+
+    .intro{ padding:0 32px 60px; gap:25px; }
+    .intro-visual{
+      max-width:100%;
+      margin-left:0;
+      margin-right:0;
+      padding-right:35px;
+    }
+    .intro-visual .v-side{
+      width:20%;
+      right:0;
+      bottom:-16%;
+    }
+    .intro-credit{ margin-top:34px; }
+    .intro-copy{ max-width:100%; margin-top:26px; padding-right:30px; }
+    .intro-copy p{ margin:0 0 12px; }
+    .intro-copy .bts-link{ margin-top:14px; }
+
+    .bottom-credit{ padding:0 32px; }
+    .more-work{ margin:20px auto 25px; }
+  }
+
+  @media (max-width:420px){
+    .nav{ padding:16px 24px; }
+    .project-header{ padding:26px 26px 6px; }
+    .intro{ padding:0 26px 48px; }
+    .bottom-credit{ padding:0 26px; }
+    .intro-visual{ margin-top:8px; padding-right:24px; }
+    .intro-visual .v-side{
+      width:29%;
+      right:0;
+      bottom:-11%;
+    }
+  }
+
+  /* phone: the role line ("research + design + ...") is the same size on every project page */
+  @media (max-width:760px){
+    .project-tag{ font-size:16px; }
+  }
+</style>
+<style>
+  /* phone-consistency:start — phone only; same nav + same title spot on every project page */
+  @media (max-width:760px){
+    .nav{ padding:18px 14px; }                       /* "lucy pok*" and "back" closer to the edges, same on every page */
+    .nav-mark{ font-size:17px; margin-left:0; }
+    .nav-back{ font-size:13px; }
+    .project-header{ padding-top:25px; }             /* role line + title start at the same height on every page */
+  }
+  /* phone-consistency:end */
+</style>
+</head>
+<body>
+
+  <div class="hero-bg">
+    <nav class="nav">
+      <a class="nav-mark" href="index.html">lucy pok*</a>
+      <a class="nav-back" href="index.html" onclick="if(history.length>1&&(location.protocol==='file:'||(document.referrer&&document.referrer.indexOf(location.origin)===0))){history.back();return false;}">&larr; back</a>
+    </nav>
+
+    <header class="project-header">
+      <p class="project-tag">concept + strategy + visuals</p>
+      <h1 class="project-title">DEPOP — spec campaign</h1>
+    </header>
+
+    <div class="intro">
+      <div>
+        <div class="intro-visual">
+          <img class="v-main" src="depop-hero-metro copy.jpg" alt="Depop campaign mockup: the Rotterdam Centraal metro display above a window sticker asking 'can you find it?'">
+          <img class="v-side" src="depop-hero-doors copy.gif" alt="Passengers checking their phones as the metro doors open">
+        </div>
+      </div>
+      <div class="intro-copy">
+        <p>The metro is fast, urban, and sustainable, just like <a class="depop-link" href="https://www.depop.com/" target="_blank" rel="noopener">Depop</a>. Or what it aspires to be.</p>
+        <p><a class="depop-link-white" href="https://news.depop.com/who-we-are/about/" target="_blank" rel="noopener">Depop</a> is a peer-to-peer marketplace to buy, sell and discover secondhand fashion.</p>
+        <p>What they're missing is a direct line to the young, urban community that already fits that identity.</p>
+        <p>In the Netherlands,  80% of young people rely on public transport. While waiting, most people are on their phones but the only moment they look up is when the metro arrives.</p>
+        <p>That's the moment we grab their attention and link it directly to Depop. By putting stickers on the metro windows, we frame every outfit as a potential Depop buy or sell.</p>
+        <a class="bts-link" href="https://www.youtube.com/watch?v=GMriUzdwgc4" target="_blank" rel="noopener"> Watch video from the shoot :)</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="carousel-banner">
+    <div class="carousel-track">
+      <img src="depop-grid-01 copy.jpg" alt="Passenger in a red jacket on the metro checking her phone, 'can I find that top?'">
+      <img src="depop-grid-02 copy.jpg" alt="Two passengers checking their phones on the metro, 'can I find that hat?'">
+      <img src="depop-grid-03 copy.jpg" alt="Metro platform with the Depop logo overlay, 'fast, urban, sustainable'">
+      <img src="depop-grid-04 copy.jpg" alt="Depop sticker overlay on a passenger's boots, 'can you find it?'">
+      <img src="depop-grid-05 copy.jpg" alt="Depop sticker overlay on a passenger's bag and plaid skirt, 'can you find it?'">
+      <img src="depop-grid-01 copy.jpg" alt="Passenger in a red jacket on the metro checking her phone, 'can I find that top?'">
+      <img src="depop-grid-02 copy.jpg" alt="Two passengers checking their phones on the metro, 'can I find that hat?'">
+      <img src="depop-grid-03 copy.jpg" alt="Metro platform with the Depop logo overlay, 'fast, urban, sustainable'">
+      <img src="depop-grid-04 copy.jpg" alt="Depop sticker overlay on a passenger's boots, 'can you find it?'">
+      <img src="depop-grid-05 copy.jpg" alt="Depop sticker overlay on a passenger's bag and plaid skirt, 'can you find it?'">
+    </div>
+  </div>
+
+  <div class="hero-bg footer-bg">
+    <div class="bottom-credit">
+      <p>This project was made with <strong>Liesbeth </strong></p>
+      <img src="depop-liesbeth copy.jpg" alt="Portrait of Liesbeth, collaborator on the Depop campaign">
+    </div>
+
+    <a class="more-work" href="index.html">
+      <span>more work?</span>
+    </a>
+  </div>
+
+  <script>
+    (function(){
+      var banner = document.querySelector('.carousel-banner');
+      var track = document.querySelector('.carousel-track');
+      if(!banner || !track) return;
+
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var mobileQuery = window.matchMedia('(max-width:760px)');
+      var isHeld = false;
+      var resumeTimer = null;
+      var half = 0;
+
+      function isMobile(){ return mobileQuery.matches; }
+      function measure(){ half = track.scrollWidth / 2; }
+
+      function pause(){
+        isHeld = true;
+        clearTimeout(resumeTimer);
+      }
+      function scheduleResume(){
+        clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(function(){ isHeld = false; }, 1000);
+      }
+
+      banner.addEventListener('touchstart', pause, { passive:true });
+      banner.addEventListener('touchend', scheduleResume, { passive:true });
+      banner.addEventListener('touchcancel', scheduleResume, { passive:true });
+      banner.addEventListener('mousedown', pause);
+      window.addEventListener('mouseup', scheduleResume);
+      window.addEventListener('resize', measure);
+
+      measure();
+
+      function step(){
+        if(isMobile() && !isHeld && !reduceMotion && half > 0){
+          banner.scrollLeft += 0.6;
+          if(banner.scrollLeft >= half){ banner.scrollLeft -= half; }
+        }
+        requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    })();
+
+    // ---------- Subtle background parallax on scroll (eases in like the homepage hero) ----------
+    (function(){
+      var heroBgs = document.querySelectorAll('.hero-bg');
+      if(!heroBgs.length) return;
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var isMobile = window.matchMedia('(max-width:760px)').matches;
+      if(reduceMotion || isMobile) return;
+
+      var current = 0;
+      var target = 0;
+      var ticking = false;
+
+      heroBgs.forEach(function(el){
+        el.dataset.baseY = el.classList.contains('footer-bg') ? '75' : '30';
+      });
+
+      function updateTarget(){
+        target = window.scrollY * 0.045; // drift amount
+      }
+
+      function animate(){
+        current += (target - current) * 0.06; // easing so it "catches up" as scrolling slows
+        heroBgs.forEach(function(el){
+          el.style.backgroundPosition = 'center calc(' + el.dataset.baseY + '% + ' + current.toFixed(2) + 'px)';
+        });
+        if(Math.abs(target - current) > 0.05){
+          requestAnimationFrame(animate);
+        } else {
+          ticking = false;
+        }
+      }
+
+      window.addEventListener('scroll', function(){
+        updateTarget();
+        if(!ticking){
+          ticking = true;
+          requestAnimationFrame(animate);
+        }
+      }, { passive:true });
+    })();
+  </script>
+
+
+  
+
+</body>
+</html>
