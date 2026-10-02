@@ -141,8 +141,8 @@
     white-space:nowrap; pointer-events:none;
   }
   .bubble--phone{ display:none !important; }
-  .bubble--phone svg{ width:82px; height:31.7px; }   /* phone: bigger (was 66 x 25.5) */
-  .bubble--phone .bubble-txt{ font-size:12.5px; top:42%; }   /* was 10px */
+  .bubble--phone svg{ width:78px; height:30.2px; }   /* phone: bigger (was 66 x 25.5) */
+  .bubble--phone .bubble-txt{ font-size:12px; top:42%; }   /* was 10px */
 
   /* ---------- Footer: separated by a line, left-aligned, smaller ---------- */
   .footer{
@@ -427,13 +427,13 @@
   }
   @media (max-width:760px){
     .banner{ font-size:12px; -webkit-text-size-adjust:100%; text-size-adjust:100%; }   /* phone only: the browser no longer enlarges this wide line, so 12px is the real size */
-    .social{ top:34px; right:6px; }   /* phone: one bubble in the top corner */
+    .social{ top:30px; right:6px; }   /* phone: one bubble in the top corner */
     .social .bubble:not(.bubble--phone){ display:none; }
     .social .bubble--phone{ display:flex !important; }
-    .intro{ padding:34px 24px 0; }   /* nothing sits in the top corner on phone any more, so the text moves back up */
-    .intro-title{ font-size:clamp(26px, 7.4vw, 38px); white-space:normal; width:calc(100% / var(--stretch)); }
-    .lucy-stack{ width:1.85em; height:1.4em; margin:-0.25em 0 -0.25em 0.07em; top:-0.12em; }   /* phone: slightly smaller than before (was 2.1em x 1.6em) */
-    .intro-note{ margin-top:2px; font-size:calc(clamp(26px, 7.4vw, 38px) * 0.32); }   /* phone: a bit bigger (was 9px); tied to the title size so it ends at about the 'k' in 'Lucy Pok' */
+    .intro{ padding:29px 24px 0; }   /* nothing sits in the top corner on phone any more, so the text moves back up */
+    .intro-title{ font-size:clamp(27.5px, 7.9vw, 40px); white-space:normal; width:calc(100% / var(--stretch)); }
+    .lucy-stack{ width:1.52em; height:1.15em; margin:-0.25em 0 -0.25em 0.07em; top:-0.12em; }   /* phone: slightly smaller than before (was 2.1em x 1.6em) */
+    .intro-note{ margin-top:2px; font-size:calc(clamp(27.5px, 7.9vw, 40px) * 0.32); }   /* phone: a bit bigger (was 9px); tied to the title size so it ends at about the 'k' in 'Lucy Pok' */
     .intro-desc{ margin-top:24px; font-size:13.5px; }
     .intro-cta{ margin-top:28px; font-size:12px; }
     .work-grid{ display:block; column-count:auto; padding:40px 20px 24px; }
