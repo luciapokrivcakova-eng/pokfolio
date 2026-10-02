@@ -263,6 +263,19 @@
     .summary{ padding:0 20px; }
   }
 </style>
+<style>
+  /* phone-consistency:start — phone only; same nav + same title spot on every project page */
+  @media (max-width:760px){
+    .nav{ padding:18px 18px; }                       /* "lucy pok*" and "back" a bit closer to the edges, same on every page */
+    .nav-mark{ font-size:17px; margin-left:0; }
+    .nav-back{ font-size:13px; }
+    .project-header{ padding-top:25px; }             /* role line + title start at the same height on every page */
+  }
+  @media (max-width:760px){
+    .more-work{ margin:70px auto 25px; }             /* more room above "more work" (was 20px) */
+  }
+  /* phone-consistency:end */
+</style>
 </head>
 <body>
 
