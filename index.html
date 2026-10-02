@@ -432,7 +432,7 @@
     .social .bubble--phone{ display:flex !important; }
     .intro{ padding:34px 24px 0; }   /* nothing sits in the top corner on phone any more, so the text moves back up */
     .intro-title{ font-size:clamp(26px, 7.4vw, 38px); white-space:normal; width:calc(100% / var(--stretch)); }
-    .lucy-stack{ width:2.1em; height:1.6em; margin:-0.25em 0 -0.25em 0.07em; top:-0.12em; }   /* phone: bigger photo, nudged up (was 1.4em x 1.05em) */
+    .lucy-stack{ width:1.85em; height:1.4em; margin:-0.25em 0 -0.25em 0.07em; top:-0.12em; }   /* phone: slightly smaller than before (was 2.1em x 1.6em) */
     .intro-note{ margin-top:2px; font-size:calc(clamp(26px, 7.4vw, 38px) * 0.32); }   /* phone: a bit bigger (was 9px); tied to the title size so it ends at about the 'k' in 'Lucy Pok' */
     .intro-desc{ margin-top:24px; font-size:13.5px; }
     .intro-cta{ margin-top:28px; font-size:12px; }
@@ -678,7 +678,7 @@
       if (!cards.length) { stack.style.display = 'none'; return; }
       if (!cards.length) return;
       const VISIBLE = 5;   // how many photos are visible in the pile at once
-      const SPEED = 750;   // ms per photo
+      const SPEED = matchMedia('(max-width:760px)').matches ? 1100 : 750;   // ms per photo (phone: slower)
       const rnd = (a,b) => a + Math.random()*(b-a);
       let z = 1, i = 0, pile = [];
       // On phones only horizontal (landscape) photos are shown
