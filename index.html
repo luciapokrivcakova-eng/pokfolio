@@ -397,6 +397,8 @@
   .work-card--natural .work-card-image video{ height:auto; object-fit:initial; }
   .work-card--crop .work-card-image{ aspect-ratio:3 / 2; }   /* was 5 / 2: taller so the image is less squished */
   .work-card--crop .work-card-image img{ object-fit:cover; object-position:center 30%; }
+  .work-card--stickers.work-card--natural .work-card-image{ aspect-ratio:1191 / 1290; }   /* Roffa card: almost the whole image, a little cut off at the bottom */
+  .work-card--stickers.work-card--natural .work-card-image img{ height:100%; object-fit:cover; object-position:center top; }
   .work-card-content{ padding:16px; }
   .work-card-title{ font-weight:600; font-size:15px; margin:0 0 5px; }
   .work-card-role{ font-size:11px; font-weight:500; letter-spacing:0.02em; margin:0; }
@@ -477,10 +479,12 @@
     90% { transform:translate(-50px, 50px); }
     100%{ transform:translate(0, 0); }
   }
-  /* phone only: tapping "let's chat" lands with the contact text towards the middle of the screen
-     (more room below it) and the project above only partly in view */
+  /* phone only: bigger "Say hi back :)" and a smaller gap below it (about a quarter of before) */
   @media (max-width:760px){
-    #contact{ scroll-margin-top:26vh; scroll-margin-top:26svh; min-height:74vh; min-height:74svh; }
+    .footer{ padding-bottom:120px; }
+    .footer-title{ font-size:26px; }
+    .footer-mail{ font-size:14px; }
+    .footer-social svg{ width:22px; height:22px; }
   }
 </style>
 </head>
@@ -594,9 +598,9 @@
       </a>
 
       <a href="roffa-mon-amour.html" style="display:contents;">
-        <div class="work-card">
+        <div class="work-card work-card--natural work-card--stickers">
           <div class="work-card-image">
-            <img src="stick.png" alt="Roffa Mon Amour">
+            <img src="actualstickers.png" alt="Roffa Mon Amour">
           </div>
           <div class="work-card-content">
             <h3 class="work-card-title">Roffa Mon Amour</h3>
