@@ -477,6 +477,11 @@
     90% { transform:translate(-50px, 50px); }
     100%{ transform:translate(0, 0); }
   }
+  /* phone only: tapping "let's chat" lands with the contact text towards the middle of the screen
+     (more room below it) and the project above only partly in view */
+  @media (max-width:760px){
+    #contact{ scroll-margin-top:26vh; scroll-margin-top:26svh; min-height:74vh; min-height:74svh; }
+  }
 </style>
 </head>
 <body>
@@ -591,7 +596,7 @@
       <a href="roffa-mon-amour.html" style="display:contents;">
         <div class="work-card">
           <div class="work-card-image">
-            <img src="roffamonamour copy.jpg" alt="Roffa Mon Amour">
+            <img src="stick.png" alt="Roffa Mon Amour">
           </div>
           <div class="work-card-content">
             <h3 class="work-card-title">Roffa Mon Amour</h3>

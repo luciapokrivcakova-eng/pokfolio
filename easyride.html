@@ -74,7 +74,6 @@
   }
   a{ color:inherit; }
   .hero-top{ position:relative; overflow:hidden; }
-  .wheel-deco{ position:absolute; top:-8%; right:-4%; width:340px; max-width:34vw; z-index:0; pointer-events:none; transform:rotate(6deg); }
   .nav{ position:relative; z-index:2; display:flex; align-items:center; justify-content:space-between; padding:24px 18px; max-width:1400px; margin:0 auto; }
   .nav-mark{ font-family:'Inter', sans-serif; font-size:20px; font-weight:600; letter-spacing:-0.06em; text-transform:uppercase; text-decoration:none; display:inline-block; transform:scaleX(1.12); transform-origin:left; margin-left:-10px; color:var(--ink); }
   .nav-back{ font-family:'Inter', sans-serif; font-weight:500; font-size:14px; letter-spacing:-0.01em; text-decoration:none; transform:scaleX(1.15); transition:opacity 0.2s ease; color:var(--ink); }
@@ -187,8 +186,7 @@
   @keyframes gentle-shake{ 0%, 100%{ transform:rotate(0deg); } 25%{ transform:rotate(-3deg); } 75%{ transform:rotate(3deg); } }
   .more-work span{ font-size:15px; font-weight:700; letter-spacing:0.03em; transform:scaleX(1.14); text-transform:uppercase; color:var(--ink); }
   @media (max-width:760px){
-    .wheel-deco{ width:180px; top:-4%; right:-8%; }
-    .nav{ padding:18px 28px; }
+      .nav{ padding:18px 28px; }
     .nav-mark{ font-size:17px; margin-left:0; }
     .nav-back{ font-size:13px; }
     .project-header{ padding:30px 32px 6px; }
@@ -213,6 +211,9 @@
   @media (max-width:760px){
     .more-work{ margin:50px auto 25px; }             /* more room above "more work" and the posters (was 20px) */
   }
+  @media (max-width:760px){
+    .deck-grid-label{ font-size:37px; transform:scaleX(1.22); }   /* "the campaign": a tiny bit more space from the screen edges */
+  }
   /* phone-consistency:end */
 </style>
 </head>
@@ -220,7 +221,6 @@
 
   <div class="top-band">
   <div class="hero-top">
-    <img class="wheel-deco" src="wheel copy.png" alt="">
 
     <nav class="nav">
       <a class="nav-mark" href="index.html">lucy pok*</a>
