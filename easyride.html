@@ -209,10 +209,25 @@
     .project-header{ padding-top:25px; }             /* role line + title start at the same height on every page */
   }
   @media (max-width:760px){
-    .more-work{ margin:50px auto 25px; }             /* more room above "more work" and the posters (was 20px) */
+    .more-work{ margin:50px auto 76px; }             /* more room above "more work" and the posters (was 20px) */
   }
   @media (max-width:760px){
     .deck-grid-label{ font-size:37px; transform:scaleX(1.22); }   /* "the campaign": a tiny bit more space from the screen edges */
+  }
+  /* phone only: semi-transparent "back to top" arrow in the bottom right, appears near the bottom of the page */
+  .up-btn{ display:none; }
+  @media (max-width:760px){
+    .up-btn{
+      position:fixed; right:16px; bottom:calc(20px + env(safe-area-inset-bottom, 0px)); z-index:200;
+      width:48px; height:48px; border-radius:50%; border:0; padding:0;
+      display:flex; align-items:center; justify-content:center;
+      background:rgba(255,255,255,0.62); color:#17150f;
+      -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
+      box-shadow:0 2px 10px rgba(0,0,0,0.18);
+      opacity:0; pointer-events:none; transition:opacity 0.25s ease; cursor:pointer;
+    }
+    .up-btn.show{ opacity:1; pointer-events:auto; }
+    .up-btn svg{ width:26px; height:26px; display:block; }
   }
   /* phone-consistency:end */
 </style>
@@ -243,9 +258,9 @@
     <div class="hero-scene">
       <div class="hero-toy-wrap wand-a"><img class="hero-toy wand-a" src="easyride-toy-wand copy.png" alt=""></div>
       <div class="hero-toy-wrap rabbit"><img class="hero-toy rabbit" src="easyride-toy-rabbit copy.png" alt=""></div>
-      <div class="hero-toy-wrap dildo"><img class="hero-toy dildo" src="easyride-toy-dildo copy.png" alt=""></div>
+      <div class="hero-toy-wrap dildo"><img loading="lazy" decoding="async" class="hero-toy dildo" src="easyride-toy-dildo copy.png" alt=""></div>
       <div class="hero-bike-wrap" id="heroBikeWrap">
-        <img class="hero-bike" src="easyride-bike-top copy.png" alt="Top-down view of a pink road bike, riding down the center of the road">
+        <img loading="lazy" decoding="async" class="hero-bike" src="easyride-bike-top copy.png" alt="Top-down view of a pink road bike, riding down the center of the road">
       </div>
     </div>
   </div>
@@ -256,12 +271,12 @@
     <p class="deck-subtitle">EasyRide, improving rides since 2007</p>
     <p class="deck-rotate-hint">(for a better read, turn the phone)</p>
     <div class="deck-grid" id="deckGrid">
-      <div class="deck-grid-item"><img src="2 copy.png" alt="Insight slide: 'You don't need it. Until you do.'"></div>
-      <div class="deck-grid-item"><img src="3 copy.png" alt="Target audience slide: the perfect fit, 20s, 50s and women riders"></div>
-      <div class="deck-grid-item"><img src="4 (2) copy.png" alt="Execution 1, Dutch copy posters: Even remmen, Gepompt tot de juiste spanning, Kom op je eigen cadans"></div>
-      <div class="deck-grid-item"><img src="20 copy.png" alt="Execution 2: EasyRide personal lubricant seeded in Dutch road cycling shops"></div>
-      <div class="deck-grid-item"><img src="21 copy.png" alt="Execution 3: Stay on track, seeded Strava activity notes"></div>
-      <div class="deck-grid-item"><img src="22 copy.png" alt="Closing slide: road cyclists spend freely on what makes the ride better, your pleasure deserves the same"></div>
+      <div class="deck-grid-item"><img loading="lazy" decoding="async" src="2 copy.png" alt="Insight slide: 'You don't need it. Until you do.'"></div>
+      <div class="deck-grid-item"><img loading="lazy" decoding="async" src="3 copy.png" alt="Target audience slide: the perfect fit, 20s, 50s and women riders"></div>
+      <div class="deck-grid-item"><img loading="lazy" decoding="async" src="4 (2) copy.png" alt="Execution 1, Dutch copy posters: Even remmen, Gepompt tot de juiste spanning, Kom op je eigen cadans"></div>
+      <div class="deck-grid-item"><img loading="lazy" decoding="async" src="20 copy.png" alt="Execution 2: EasyRide personal lubricant seeded in Dutch road cycling shops"></div>
+      <div class="deck-grid-item"><img loading="lazy" decoding="async" src="21 copy.png" alt="Execution 3: Stay on track, seeded Strava activity notes"></div>
+      <div class="deck-grid-item"><img loading="lazy" decoding="async" src="22 copy.png" alt="Closing slide: road cyclists spend freely on what makes the ride better, your pleasure deserves the same"></div>
     </div>
     <div class="deck-dots" id="deckDots"></div>
   </div>
@@ -281,18 +296,18 @@
 
   <div class="carousel-banner">
     <div class="carousel-track">
-      <img src="1apng copy.png" alt="Poster: Get into position, bike handlebars">
-      <img src="2a copy.png" alt="Poster: Gepompt tot de juiste spanning, close-up of bike tyre">
-      <img src="3a copy.png" alt="Poster: Even remmen, close-up of bike brake levers">
-      <img src="4a copy.png" alt="Poster: Get into position, bike handlebars alternate crop">
-      <img src="5apng copy.png" alt="Poster: Pumped up to the right tension, close-up of bike tyre">
-      <img src="6a copy.png" alt="Poster: Kom op je eigen cadans, bike handlebars in motion">
-      <img src="1apng copy.png" alt="Poster: Get into position, bike handlebars">
-      <img src="2a copy.png" alt="Poster: Gepompt tot de juiste spanning, close-up of bike tyre">
-      <img src="3a copy.png" alt="Poster: Even remmen, close-up of bike brake levers">
-      <img src="4a copy.png" alt="Poster: Get into position, bike handlebars alternate crop">
-      <img src="5apng copy.png" alt="Poster: Pumped up to the right tension, close-up of bike tyre">
-      <img src="6a copy.png" alt="Poster: Kom op je eigen cadans, bike handlebars in motion">
+      <img loading="lazy" decoding="async" src="1apng copy.png" alt="Poster: Get into position, bike handlebars">
+      <img loading="lazy" decoding="async" src="2a copy.png" alt="Poster: Gepompt tot de juiste spanning, close-up of bike tyre">
+      <img loading="lazy" decoding="async" src="3a copy.png" alt="Poster: Even remmen, close-up of bike brake levers">
+      <img loading="lazy" decoding="async" src="4a copy.png" alt="Poster: Get into position, bike handlebars alternate crop">
+      <img loading="lazy" decoding="async" src="5apng copy.png" alt="Poster: Pumped up to the right tension, close-up of bike tyre">
+      <img loading="lazy" decoding="async" src="6a copy.png" alt="Poster: Kom op je eigen cadans, bike handlebars in motion">
+      <img loading="lazy" decoding="async" src="1apng copy.png" alt="Poster: Get into position, bike handlebars">
+      <img loading="lazy" decoding="async" src="2a copy.png" alt="Poster: Gepompt tot de juiste spanning, close-up of bike tyre">
+      <img loading="lazy" decoding="async" src="3a copy.png" alt="Poster: Even remmen, close-up of bike brake levers">
+      <img loading="lazy" decoding="async" src="4a copy.png" alt="Poster: Get into position, bike handlebars alternate crop">
+      <img loading="lazy" decoding="async" src="5apng copy.png" alt="Poster: Pumped up to the right tension, close-up of bike tyre">
+      <img loading="lazy" decoding="async" src="6a copy.png" alt="Poster: Kom op je eigen cadans, bike handlebars in motion">
     </div>
   </div>
 
@@ -402,5 +417,15 @@
 
   
 
+  <button class="up-btn" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></button>
+  <script>
+    // back-to-top arrow (phone only): fades in when you are near the bottom of the page
+    (function(){
+      var b=document.querySelector('.up-btn'); if(!b) return;
+      function update(){ var left=document.documentElement.scrollHeight-(window.scrollY+window.innerHeight); b.classList.toggle('show', window.scrollY>200 && left<700); }
+      addEventListener('scroll',update,{passive:true}); addEventListener('resize',update); update();
+      b.addEventListener('click',function(){ scrollTo({top:0,behavior:'smooth'}); });
+    })();
+  </script>
 </body>
 </html>

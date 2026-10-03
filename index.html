@@ -397,8 +397,11 @@
   .work-card--natural .work-card-image video{ height:auto; object-fit:initial; }
   .work-card--crop .work-card-image{ aspect-ratio:3 / 2; }   /* was 5 / 2: taller so the image is less squished */
   .work-card--crop .work-card-image img{ object-fit:cover; object-position:center 30%; }
-  .work-card--stickers.work-card--natural .work-card-image{ aspect-ratio:1191 / 1290; }   /* Roffa card: almost the whole image, a little cut off at the bottom */
-  .work-card--stickers.work-card--natural .work-card-image img{ height:100%; object-fit:cover; object-position:center top; }
+  /* Roffa card: phone keeps the original crop; laptop shows almost the whole image, cut just below the pink sticker */
+  @media (min-width:761px){
+    .work-card--stickers .work-card-image{ max-height:none; aspect-ratio:1191 / 1140; }
+    .work-card--stickers .work-card-image img{ object-position:center top; }
+  }
   .work-card-content{ padding:16px; }
   .work-card-title{ font-weight:600; font-size:15px; margin:0 0 5px; }
   .work-card-role{ font-size:11px; font-weight:500; letter-spacing:0.02em; margin:0; }
@@ -481,7 +484,7 @@
   }
   /* phone only: bigger "Say hi back :)" and a smaller gap below it (about a quarter of before) */
   @media (max-width:760px){
-    .footer{ padding-top:112px; padding-bottom:180px; }   /* more space above the line (was 48px) and below the contact text (was 120px) */
+    .footer{ padding-top:165px; padding-bottom:180px; }   /* more space above the line (was 48px) and below the contact text (was 120px) */
     .footer-title{ font-size:26px; }
     .footer-mail{ font-size:14px; }
     .footer-social svg{ width:22px; height:22px; }
@@ -548,7 +551,7 @@
       <a href="hickey.html" style="display:contents;">
         <div class="work-card">
           <div class="work-card-image">
-            <img src="hickeyzine copy.jpg" alt="Hickey zine">
+            <img loading="lazy" decoding="async" src="hickeyzine copy.jpg" alt="Hickey zine">
           </div>
           <div class="work-card-content">
             <h3 class="work-card-title">Hickey</h3>
@@ -561,7 +564,7 @@
       <a href="stain.html" style="display:contents;">
         <div class="work-card work-card--natural">
           <div class="work-card-image">
-            <video src="stain copy.mp4" autoplay muted loop playsinline></video>
+            <video data-src="stain copy.mp4" muted loop playsinline preload="none"></video>
           </div>
           <div class="work-card-content">
             <h3 class="work-card-title">STAIN</h3>
@@ -587,7 +590,7 @@
       <a href="depop.html" style="display:contents;">
         <div class="work-card work-card--natural">
           <div class="work-card-image">
-            <video src="depop copy.mp4" autoplay muted loop playsinline></video>
+            <video data-src="depop copy.mp4" muted loop playsinline preload="none"></video>
           </div>
           <div class="work-card-content">
             <h3 class="work-card-title">Depop Campaign</h3>
@@ -598,9 +601,9 @@
       </a>
 
       <a href="roffa-mon-amour.html" style="display:contents;">
-        <div class="work-card work-card--natural work-card--stickers">
+        <div class="work-card work-card--stickers">
           <div class="work-card-image">
-            <img src="actualstickers.png" alt="Roffa Mon Amour Festival">
+            <img loading="lazy" decoding="async" src="actualstickers.png" alt="Roffa Mon Amour Festival">
           </div>
           <div class="work-card-content">
             <h3 class="work-card-title">Roffa Mon Amour Festival</h3>
@@ -613,7 +616,7 @@
       <a href="easyride.html" style="display:contents;">
         <div class="work-card work-card--natural">
           <div class="work-card-image">
-            <img src="easrideimage copy.jpg" alt="Easy Ride">
+            <img loading="lazy" decoding="async" src="easrideimage copy.jpg" alt="Easy Ride">
           </div>
           <div class="work-card-content">
             <h3 class="work-card-title">Easy Ride</h3>
@@ -626,7 +629,7 @@
       <a href="hyperraar.html" style="display:contents;">
         <div class="work-card work-card--natural">
           <div class="work-card-image">
-            <video src="hyperraar copy.mp4" autoplay muted loop playsinline></video>
+            <video data-src="hyperraar copy.mp4" muted loop playsinline preload="none"></video>
           </div>
           <div class="work-card-content">
             <h3 class="work-card-title">Hyperraar</h3>
@@ -776,6 +779,20 @@
 
   </script>
   <div class="grain" aria-hidden="true"></div>
+
+  <script>
+    // card videos: start loading + playing only when they get near the screen (saves a lot of data on first load)
+    (function(){
+      const vids = [...document.querySelectorAll('video[data-src]')];
+      if (!vids.length) return;
+      const start = v => { if (!v.src){ v.src = v.dataset.src; v.load(); } const p = v.play(); if (p && p.catch) p.catch(()=>{}); };
+      if (!('IntersectionObserver' in window)){ vids.forEach(start); return; }
+      const phone = matchMedia('(max-width:760px)').matches;
+      // laptop: a video starts as soon as it is (nearly) visible and keeps moving after that; phone: pauses off-screen to save battery/data
+      const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) start(e.target); else if (phone) e.target.pause(); }), {rootMargin:'400px 0px'});
+      vids.forEach(v => io.observe(v));
+    })();
+  </script>
 
   <script>
     // big "back to top" arrow (phone only): fades in once you have scrolled a bit

@@ -272,7 +272,22 @@
     .project-header{ padding-top:25px; }             /* role line + title start at the same height on every page */
   }
   @media (max-width:760px){
-    .more-work{ margin:70px auto 49px; }             /* more room above "more work" (was 20px) */
+    .more-work{ margin:70px auto 100px; }             /* more room above "more work" (was 20px) */
+  }
+  /* phone only: semi-transparent "back to top" arrow in the bottom right, appears near the bottom of the page */
+  .up-btn{ display:none; }
+  @media (max-width:760px){
+    .up-btn{
+      position:fixed; right:16px; bottom:calc(20px + env(safe-area-inset-bottom, 0px)); z-index:200;
+      width:48px; height:48px; border-radius:50%; border:0; padding:0;
+      display:flex; align-items:center; justify-content:center;
+      background:rgba(255,255,255,0.62); color:#17150f;
+      -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
+      box-shadow:0 2px 10px rgba(0,0,0,0.18);
+      opacity:0; pointer-events:none; transition:opacity 0.25s ease; cursor:pointer;
+    }
+    .up-btn.show{ opacity:1; pointer-events:auto; }
+    .up-btn svg{ width:26px; height:26px; display:block; }
   }
   /* phone-consistency:end */
 </style>
@@ -310,5 +325,15 @@
 
   
 
+  <button class="up-btn" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></button>
+  <script>
+    // back-to-top arrow (phone only): fades in when you are near the bottom of the page
+    (function(){
+      var b=document.querySelector('.up-btn'); if(!b) return;
+      function update(){ var left=document.documentElement.scrollHeight-(window.scrollY+window.innerHeight); b.classList.toggle('show', window.scrollY>200 && left<700); }
+      addEventListener('scroll',update,{passive:true}); addEventListener('resize',update); update();
+      b.addEventListener('click',function(){ scrollTo({top:0,behavior:'smooth'}); });
+    })();
+  </script>
 </body>
 </html>

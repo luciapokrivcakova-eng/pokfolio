@@ -356,11 +356,26 @@
     .project-header{ padding-top:25px; }             /* role line + title start at the same height on every page */
   }
   @media (max-width:760px){
-    .more-work{ margin-bottom:49px; }   /* same distance from the bottom edge as the Depop page */
+    .more-work{ margin-bottom:100px; }   /* same distance from the bottom edge as the Depop page */
   }
   @media (max-width:760px){
     .piece--floor{ display:flex; flex-direction:column-reverse; }   /* "floorplans" label above the image on phone */
     .piece--floor .tag{ margin:0 0 8px; }
+  }
+  /* phone only: semi-transparent "back to top" arrow in the bottom right, appears near the bottom of the page */
+  .up-btn{ display:none; }
+  @media (max-width:760px){
+    .up-btn{
+      position:fixed; right:16px; bottom:calc(20px + env(safe-area-inset-bottom, 0px)); z-index:200;
+      width:48px; height:48px; border-radius:50%; border:0; padding:0;
+      display:flex; align-items:center; justify-content:center;
+      background:rgba(255,255,255,0.62); color:#17150f;
+      -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
+      box-shadow:0 2px 10px rgba(0,0,0,0.18);
+      opacity:0; pointer-events:none; transition:opacity 0.25s ease; cursor:pointer;
+    }
+    .up-btn.show{ opacity:1; pointer-events:auto; }
+    .up-btn svg{ width:26px; height:26px; display:block; }
   }
   /* phone-consistency:end */
 </style>
@@ -397,29 +412,29 @@
   <div class="work-mosaic" id="mosaic">
 
     <figure class="piece piece--sticker" style="--x:3.04; --y:9.45; --w:10.96;">
-      <img src="pink copy.png" alt="Sticker reading almost cried" draggable="false">
+      <img loading="lazy" decoding="async" src="pink copy.png" alt="Sticker reading almost cried" draggable="false">
       <span class="tag" style="--tx:95; --ty:-17.4;">stickers</span>
     </figure>
     <figure class="piece piece--sticker" style="--x:17.65; --y:9.24; --w:10.55;">
-      <img src="orange_ copy.png" alt="Sticker reading plot twist" draggable="false">
+      <img loading="lazy" decoding="async" src="orange_ copy.png" alt="Sticker reading plot twist" draggable="false">
     </figure>
     <figure class="piece piece--sticker" style="--x:13.07; --y:28.14; --w:11.77;">
-      <img src="green copy.png" alt="Sticker reading mirror to my ego" draggable="false">
+      <img loading="lazy" decoding="async" src="green copy.png" alt="Sticker reading mirror to my ego" draggable="false">
     </figure>
 
     <figure class="piece" style="--x:31.82; --y:6.21; --w:16.64;">
-      <img src="EMO_Data_-_SELECTED copy.png" alt="Film emotional feedback sheet template" draggable="false">
+      <img loading="lazy" decoding="async" src="EMO_Data_-_SELECTED copy.png" alt="Film emotional feedback sheet template" draggable="false">
       <span class="tag tag--center" style="--tx:0; --ty:-11.7;">film emo-feedback sheets</span>
     </figure>
 
     <figure class="piece piece--ad" style="--x:50.93; --y:12.83; --w:21.43;">
-      <img src="FOODBANK_-_the_TEMPLATE copy.jpg" alt="My Semba film advertisement" draggable="false">
+      <img loading="lazy" decoding="async" src="FOODBANK_-_the_TEMPLATE copy.jpg" alt="My Semba film advertisement" draggable="false">
     </figure>
     <figure class="piece piece--ad piece--front" style="--x:57.02; --y:40.69; --w:21.43;">
-      <img src="FOODBANK_-_the_TEMPLATE_2 copy.jpg" alt="Take Me Home film advertisement" draggable="false">
+      <img loading="lazy" decoding="async" src="FOODBANK_-_the_TEMPLATE_2 copy.jpg" alt="Take Me Home film advertisement" draggable="false">
     </figure>
     <figure class="piece" style="--x:76.71; --y:10.34; --w:18.75;">
-      <img src="supermarket copy.jpg" alt="Advertisement displayed on a supermarket TV screen" draggable="false">
+      <img loading="lazy" decoding="async" src="supermarket copy.jpg" alt="Advertisement displayed on a supermarket TV screen" draggable="false">
       <span class="tag tag--center" style="--tx:0; --ty:-8.6;">advertisements</span>
     </figure>
 
@@ -428,13 +443,13 @@
       <span class="tag" style="--tx:36; --ty:106.4;">signs/animations</span>
     </figure>
     <figure class="piece piece--front" style="--x:29.3; --y:53.38; --w:20.25;">
-      <img src="paper copy.jpg" alt="Feedback sheet held in hand" draggable="false">
+      <img loading="lazy" decoding="async" src="paper copy.jpg" alt="Feedback sheet held in hand" draggable="false">
     </figure>
     <figure class="piece" style="--x:43.79; --y:69.17; --w:21.63;">
-      <img src="people copy.jpg" alt="Festival audience filling out feedback sheets" draggable="false">
+      <img loading="lazy" decoding="async" src="people copy.jpg" alt="Festival audience filling out feedback sheets" draggable="false">
     </figure>
     <figure class="piece piece--floor" style="--x:71.59; --y:67.52; --w:17.21;">
-      <img src="badweatherfloorplan-updated__1___1_ copy.png" alt="Venue floor plan" draggable="false">
+      <img loading="lazy" decoding="async" src="badweatherfloorplan-updated__1___1_ copy.png" alt="Venue floor plan" draggable="false">
       <span class="tag" style="--tx:30; --ty:111.7;">floorplans</span>
     </figure>
 
@@ -483,5 +498,15 @@
 
   
 
+  <button class="up-btn" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></button>
+  <script>
+    // back-to-top arrow (phone only): fades in when you are near the bottom of the page
+    (function(){
+      var b=document.querySelector('.up-btn'); if(!b) return;
+      function update(){ var left=document.documentElement.scrollHeight-(window.scrollY+window.innerHeight); b.classList.toggle('show', window.scrollY>200 && left<700); }
+      addEventListener('scroll',update,{passive:true}); addEventListener('resize',update); update();
+      b.addEventListener('click',function(){ scrollTo({top:0,behavior:'smooth'}); });
+    })();
+  </script>
 </body>
 </html>
